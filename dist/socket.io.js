@@ -100,6 +100,10 @@ var io = ('undefined' === typeof module ? {} : module.exports);
 
     socket = socket || io.sockets[uuri];
 
+    if (details && details.endpoint) {
+      uri.path = details.endpoint;
+    }
+
     // if path is different from '' or /
     return socket.of(uri.path.length > 1 ? uri.path : '');
   };
@@ -3865,7 +3869,4 @@ var swfobject=function(){var D="undefined",r="object",S="Shockwave Flash",W="Sho
   , this
 );
 
-if (typeof define === "function" && define.amd) {
-  define([], function () { return io; });
-}
 })();
